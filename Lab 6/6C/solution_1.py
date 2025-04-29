@@ -44,7 +44,7 @@ plt.show()
 
 # ---------------- PARABOLIC RESPONSE ----------------
 # Input: Parabolic
-U_parabolic = T ** 2
+U_parabolic = pow(T, 2)
 t_parabolic, y_parabolic = ctrl.forced_response(G, T, U_parabolic)
 e_parabolic = U_parabolic - y_parabolic
 

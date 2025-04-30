@@ -15,6 +15,7 @@ t = np.linspace(0, 40, 400)
 plt.figure(figsize=(16, 9))
 
 for zero in zeroes:
+    # defining the transfer function
     G = ctrl.TransferFunction([1, zero], [1, 5, 6])
     t_out, y_out = ctrl.step_response(G, t)
 

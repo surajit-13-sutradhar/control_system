@@ -9,6 +9,7 @@ plt.figure(figsize=(15, 4))
 for i, a in enumerate(a_values, 1):
     G1 = ctrl.TransferFunction([1], [1, a])
     plt.subplot(1, 3, i)
+    
     roots, gains = ctrl.root_locus(G1, plot=False)
     for j in range(roots.shape[1]):
         plt.plot(roots[:, j].real, roots[:, j].imag, 'b', linewidth=2.5)

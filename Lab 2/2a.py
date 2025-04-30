@@ -22,7 +22,6 @@ t_eval = np.linspace(t_span[0], t_span[1], 500)
 # thresholds as percentages
 thresholds = np.array[63.2, 86.5, 95.0, 98.2, 99.3]
 
-
 for i in range(len(q_steps)):
     q_value = q_steps[i]  # pick current step input value
     

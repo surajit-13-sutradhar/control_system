@@ -10,7 +10,7 @@ G1 = ctrl.TransferFunction([1, 5], [1, 0, 25])  # (s + 5) / (s^2 + 25)
 plt.subplot(3, 3, 1)
 roots, gains = ctrl.root_locus(G1, plot=False)
 for j in range(roots.shape[1]):
-    plt.plot(roots[:, j].real, roots[:, j].imag, 'b', linewidth=2.5)
+    plt.plot(roots[:, j].real, roots[:, j].imag, 'r', linewidth=2.5)
 plt.plot(np.real(G1.poles()), np.imag(G1.poles()), 'rx', markersize=10, label='Poles')
 plt.plot(np.real(G1.zeros()), np.imag(G1.zeros()), 'go', markersize=10, label='Zeros')
 plt.title("G(s) = (s + 5) / (s² + 25)")

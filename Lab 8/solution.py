@@ -1,6 +1,9 @@
+# importing libraries
 import numpy as np
 import matplotlib.pyplot as plt
 import control as cntrl
+
+# making an object for the systems
 system = [{"label" :"G1","num" :[1] ,"den" :[1,0]},
           {"label" :"G2","num" :[1,0] ,"den" :[1]},
           {"label" :"G3","num" :[1] ,"den" :[1,0,0]},
@@ -14,24 +17,26 @@ system = [{"label" :"G1","num" :[1] ,"den" :[1,0]},
 
 
 subplot=1;
+# loop over each system
 for sys in system:
+    # define numerator and denominator of each transfer function by taking the respective keys from 
     numerator =sys['num']
     denominator=sys['den']
+    # defining the transfer function using python's 'control' library
     system=cntrl.TransferFunction(numerator,denominator)
 
+    # make an array of frequencies
     frequencies = np.array([0.01,0.1,1,10,100])
+    # get the magnitude, phase and omega from cntrl.bode function
     mag,phase,omega=cntrl.bode(system,frequencies,db = True,plot=False)
 
-    gain_db=20*np.log(mag)
+    gain_db=20*np.log(mag)  # convert the parameters to required form
     phase_deg=np.degrees(phase)
 
 
     print("Frequency (rad/s) | Gain (dB) | Phase (degrees)")
     for f, g, p in zip(omega, gain_db, phase_deg):
-         print(f"{f:<18} {g:<10.2f} {p:<.2f}")
-
-
-
+        print(f"{f:<18} {g:<10.2f} {p:<.2f}")
 
     plt.figure(figsize=(20,40))
     plt.subplot(9,2,subplot)
